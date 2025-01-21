@@ -13,7 +13,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-moon-landing.netlify.app/",
+  site: "https://pictum.vercel.app/",
   integrations: [tailwind(), icon(), react(), sitemap(), robotsTxt()],
 
   i18n: {
