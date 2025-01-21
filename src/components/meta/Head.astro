@@ -1,0 +1,69 @@
+---
+import "~/styles/global.css";
+import "~/styles/theme.css";
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+import { ClientRouter } from "astro:transitions";
+import type { Metadata } from "~/types";
+
+interface Props {
+  metadata: Metadata;
+}
+
+const { metadata } = Astro.props;
+
+const { title, description } = metadata;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="generator" content={generator} />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- social media -->
+  <meta property="og:title" content="Astro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={site} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <ClientRouter />
+
+  <!-- initialize theme -->
+  <script is:inline>
+    document.addEventListener("astro:page-load", () => {
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    });
+  </script>
+</head>

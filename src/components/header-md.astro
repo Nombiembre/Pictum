@@ -1,0 +1,36 @@
+---
+import ThemeSwitcher from "~/components/theme-switcher.astro";
+import LanguageSwitcher from "~/components/lenguage-switcher.astro";
+import type { NavItem } from "~/types";
+import { getLangFromUrl } from "~/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const lang = getLangFromUrl(Astro.url);
+
+const navItems: Array<NavItem> = [
+  { title: "Pictum", url: getRelativeLocaleUrl(lang, "/") },
+];
+---
+
+<header id="page-header" class="border-offset w-full border-b py-0">
+  <div class="container flex items-center justify-between">
+    <nav>
+      <ul class="flex items-center gap-6 text-default">
+        {
+          navItems.map(({ title, url }) => (
+            <li>
+              <a class="text-sm" href={url}>
+                {title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <ThemeSwitcher showbyDefault />
+      <LanguageSwitcher showbyDefault />
+    </div>
+  </div>
+</header>

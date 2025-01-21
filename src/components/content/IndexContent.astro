@@ -1,0 +1,23 @@
+---
+import "@fontsource-variable/inter";
+import Splash from "~/components/splash.astro";
+import Layout from "~/layouts/Layout.astro";
+import "~/styles/index.css";
+import TypeDecoration from "../type-decoration.astro";
+import Faq from "../faq.astro";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const metadata = {
+  title: t("index.title"),
+  description: t("index.description"),
+};
+---
+
+<Layout metadata={metadata}>
+  <Splash />
+  <TypeDecoration />
+  <Faq />
+</Layout>

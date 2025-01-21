@@ -1,0 +1,85 @@
+---
+import Layout from "~/layouts/LayoutMd.astro";
+import FormSupport from "../support/formSupport.tsx";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+import FeedbackPopup from "../support/feedback-popup";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const metadata = {
+  title: t("support.title"),
+  description: t("support.description"),
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="container max-w-xl font-bricolage">
+    <h2 class="mt-0 font-bold md:text-2xl">
+      <span
+        class="gradient-text text-balance font-extrabold text-2xl md:text-4xl"
+        >👋 {t("support.title")}</span
+      >
+    </h2>
+    <p class="md:text-base">
+      {t("support.description")}
+    </p>
+
+    <FormSupport lang={lang} client:load />
+    <FeedbackPopup lang={lang} client:load />
+    <!-- <form class="space-y-2 md:space-y-4">
+      <div class="flex flex-col gap-2 md:flex-row">
+        <input id="input-name" type="text" placeholder={t("support.name")} />
+        <input id="input-email" type="email" placeholder={t("support.email")} />
+
+      </div>
+      <textarea
+        name=""
+        id="input-text"
+        rows="4"
+        placeholder={t("support.message")}></textarea>
+      <button
+        type="submit"
+        class="w-full rounded-lg bg-black py-3 text-center text-white"
+        >{t("support.submit")}</button
+      >
+    </form> -->
+  </div>
+</Layout>
+
+<!-- <script>
+  const form = document.querySelector("form") as HTMLFormElement;
+  const $name = document.getElementById("input-name") as HTMLInputElement;
+  const $email = document.getElementById("input-email") as HTMLInputElement;
+  const $text = document.getElementById("input-text") as HTMLTextAreaElement;
+
+  document.addEventListener("astro:page-load", () => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      console.log({ name: $name.value, email: $email.value, message: $text.value });
+
+      //  await fetch("/api/sendEmail.json", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     name: $name.value,
+      //     email: $email.value,
+      //     message: $text.value,
+      //   }),
+      // });
+
+    });
+  });
+</script>
+
+<style>
+  input,
+  textarea {
+    @apply w-full rounded-lg border-none bg-offset px-4 py-3 text-default shadow-red-500 outline-none;
+    &:focus-visible {
+      box-shadow: 0 0 0 1px;
+    }
+  }
+</style> -->

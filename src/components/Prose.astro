@@ -1,0 +1,13 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div
+  class=`
+  prose text-default mx-auto max-w-none
+  prose-headings:text-default
+  prose-headings:mb-2 prose-headings:text-base prose-headings:text-content prose-a:text-default
+  ${className}`
+>
+  <slot />
+</div>

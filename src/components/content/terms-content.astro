@@ -1,0 +1,23 @@
+---
+import Layout from "~/layouts/LayoutMd.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const data = await getCollection("terms", ({ slug }) => {
+  return slug === lang;
+});
+
+const { Content } = await data[0].render();
+
+const { title, description, date } = data[0].data;
+
+const metadata = {
+  title,
+  description,
+};
+---
+
+<Layout metadata={metadata} title={title} lastModified={date}>
+  <Content />
+</Layout>

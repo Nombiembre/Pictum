@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --clr-primary: theme("colors.pink.400");
+    --clr-secondary: theme("colors.indigo.400");
+    --clr-text: theme("colors.gray.50");
+    --clr-text-offset: theme("colors.gray.400");
+    --clr-background: theme("colors.gray.900");
+    --clr-background-accent: theme("colors.gray.800");
+    --clr-background-offset: theme("colors.gray.800");
+    --clr-border: theme("colors.gray.50" / 10%);
+
+    --clr-green-dark: 249 250 251;
+  }
+
+  html[data-theme="light"] {
+    --clr-primary: theme("colors.pink.500");
+    --clr-secondary: theme("colors.indigo.500");
+    --clr-text: theme("colors.gray.900");
+    --clr-text-offset: theme("colors.gray.600");
+    --clr-background: theme("colors.gray.50");
+    --clr-background-accent: #e4e9e5;
+    --clr-background-offset: theme("colors.gray.200");
+    --clr-border: theme("colors.gray.900" / 10%);
+
+    --clr-green: 0 172 78;
+    --clr-green-dark: 16 81 44;
+  }
+}

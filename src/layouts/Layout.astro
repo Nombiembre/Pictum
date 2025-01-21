@@ -1,0 +1,27 @@
+---
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import Head from "~/components/meta/Head.astro";
+import { getLangFromUrl } from "~/i18n/utils";
+import type { Metadata } from "~/types";
+
+interface Props {
+  metadata: Metadata;
+  absoluteHeader?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const { metadata, absoluteHeader } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <Head metadata={metadata} />
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header absolute={absoluteHeader} />
+    <slot transition:animate="fade" />
+    <Footer />
+  </body>
+</html>

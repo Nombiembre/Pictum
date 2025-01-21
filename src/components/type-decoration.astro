@@ -1,0 +1,44 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="TypeDecoration" class="bg-accent py-32">
+  <div class="container flex flex-col-reverse gap-14 md:flex-row md:gap-8">
+    <div class="space-y-6 md:space-y-10">
+      <img
+        src="/images/TypeDecoration-Icon.png"
+        alt="Canva logo"
+        class="mx-auto aspect-square w-full max-w-28 rounded-xl border border-purple-700"
+      />
+      <h2 class="text-center font-bold md:text-2xl">TypeDecoration</h2>
+      <button class="btn-primary block"> {t("canva.tryonapp")} </button>
+      <img
+        src="/images/canvaOptions.avif"
+        class="mx-auto rounded-xl"
+        alt="Canva options"
+      />
+    </div>
+    <div>
+      <div class="sticky top-40 block max-w-3xl">
+        <img
+          class="shadow-elevation-high absolute top-8 z-10 scale-90 border border-purple-600 md:top-24 md:scale-100"
+          src="/images/canvaShowcase.avif"
+          alt="Canva showcase"
+        />
+        <img
+          class="relative -z-10 md:-right-10"
+          src="/images/canvaShowcaseBg.avif"
+          alt=""
+        />
+        <img
+          class="absolute top-[31.5%] hidden md:block"
+          src="/images/canvaShowcaseShadow.avif"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
