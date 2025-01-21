@@ -21,6 +21,6 @@ export default defineConfig({
     locales: ["es", "en", "fr"]
   },
 
-  output: "hybrid",
+  output: "static",
   adapter: vercel(),
 });
