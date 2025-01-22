@@ -5,7 +5,7 @@ import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 
-import sitemap from "@astrojs/sitemap";
+import sitemap from '@inox-tools/sitemap-ext';
 
 import robotsTxt from "astro-robots-txt";
 
