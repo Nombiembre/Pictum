@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 const resend = new Resend(import.meta.env.RESEND_APIKEY);
 
+const prerender = false;
+
 const emailSource = "yourmail@nombiembre.dev"; // Replace with your email and domain
 const emailDestination = "emanuelt.marin9@gmail.com"; // Where you want to send the email
 
